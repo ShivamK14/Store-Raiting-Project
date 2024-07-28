@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-const internal = require("stream");
+import mongoose from "mongoose";
 
 const storeModel = mongoose.Schema(
   {
@@ -16,4 +15,6 @@ const storeModel = mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Store", storeModel);
+const Store = mongoose.model("Store", storeModel);
+
+export default Store;

@@ -1,6 +1,6 @@
-const storeModel = require("../models/store");
+import storeModel from "../models/store.js";
 
-const createstore = async (req, res) => {
+export const createstore = async (req, res) => {
   console.log(req.storename);
   const { storename, address } = req.body;
   const newStore = new storeModel({
@@ -16,7 +16,8 @@ const createstore = async (req, res) => {
     res.status(500).json({ message: "Something Went Wrong" });
   }
 };
-const updatestore = async (req, res) => {
+
+export const updatestore = async (req, res) => {
   const id = req.params.id;
   const { storename, address, stars } = req.body;
   if (stars > 5 || stars < 0) {
@@ -38,7 +39,7 @@ const updatestore = async (req, res) => {
     res.status(500).json({ message: "Something Went Wrong" });
   }
 };
-const deletestore = async (req, res) => {
+export const deletestore = async (req, res) => {
   const id = req.params.id;
   try {
     const stores = await storeModel.findByIdAndDelete(id);
@@ -48,7 +49,7 @@ const deletestore = async (req, res) => {
     res.status(500).json({ message: "Something Went Wrong" });
   }
 };
-const getstore = async (req, res) => {
+export const getstore = async (req, res) => {
   console.log(req.userId);
   try {
     const stores = await storeModel.find({ userId: req.userId });
@@ -59,7 +60,7 @@ const getstore = async (req, res) => {
   }
 };
 
-const getallstore = async (req, res) => {
+export const getallstore = async (req, res) => {
   console.log(req.userId);
   try {
     const stores = await storeModel.find({});
@@ -70,7 +71,7 @@ const getallstore = async (req, res) => {
   }
 };
 
-const rating = async (req, res) => {
+export const rating = async (req, res) => {
   const id = req.userId;
   console.log("_id", id);
   const { stars, userId } = req.body;
@@ -125,12 +126,4 @@ const rating = async (req, res) => {
     console.log(error);
     throw new Error(error);
   }
-};
-module.exports = {
-  createstore,
-  updatestore,
-  deletestore,
-  getstore,
-  getallstore,
-  rating,
 };

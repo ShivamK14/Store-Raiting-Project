@@ -1,13 +1,17 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const userRouter = require("./routes/userRoutes");
-const storeRouter = require("./routes/storeRouter");
-const dotenv = require("dotenv");
+import express from "express";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import userRouter from "./routes/userRoutes.js";
+import storeRouter from "./routes/storeRouter.js";
+import path from "path";
+import mongoose from "mongoose";
 const secret_key = process.env.SECRET_KEY;
 dotenv.config();
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
+const __dirname = path.resolve();
 app.use((req, res, next) => {
   console.log("HTTP Method - " + req.method + " - URL " + req.url);
   next();
@@ -29,7 +33,7 @@ mongoose
     app.listen(port, () => {
       console.log("server Has Started on " + port);
       console.log(port);
-      console.log(process.env.SECRET_KEY);
+      console.log(process.env.JWT_SECRET);
     });
   })
   .catch((error) => {

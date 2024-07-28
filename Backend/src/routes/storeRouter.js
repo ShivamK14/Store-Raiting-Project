@@ -1,15 +1,14 @@
-const express = require("express");
-const { signup, signin } = require("../controller/userController");
-const {
+import express from "express";
+import {
   createstore,
   getstore,
   getallstore,
+  rating,
   updatestore,
   deletestore,
-  rating,
-} = require("../controller/storeController");
-const auth = require("../middelwares/auth");
+} from "../controller/storeController.js";
 
+import auth from "../middelwares/auth.js";
 const storeRouter = express.Router();
 
 storeRouter.post("/", auth, createstore);
@@ -19,4 +18,4 @@ storeRouter.put("/allstroes/ratings", auth, rating);
 storeRouter.put("/:id", auth, updatestore);
 storeRouter.delete("/:id", auth, deletestore);
 
-module.exports = storeRouter;
+export default storeRouter;

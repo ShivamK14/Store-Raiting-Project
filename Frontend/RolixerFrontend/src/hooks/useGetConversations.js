@@ -9,7 +9,7 @@ const useGetConversations = () => {
     const getConversations = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/api/allstroes");
+        const res = await fetch("/api/store/allstroes");
         const data = await res.json();
         if (data.error) {
           throw new Error(data.error);
