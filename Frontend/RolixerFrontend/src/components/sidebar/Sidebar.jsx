@@ -1,5 +1,5 @@
 import Card from "../Card";
-import Conversations from "./Conversations";
+import Conversations from "./stores";
 import LogoutButton from "./LogoutButton";
 import SearchInput from "./SearchInput";
 

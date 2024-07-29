@@ -1,12 +1,13 @@
 import storeModel from "../models/store.js";
 
 export const createstore = async (req, res) => {
-  console.log(req.storename);
+  console.log(req.body);
   const { storename, address } = req.body;
+  console.log(storename, address);
   const newStore = new storeModel({
     storename: storename,
     address: address,
-    userId: req.userId,
+    userId: req.user,
   });
   try {
     await newStore.save();
@@ -27,7 +28,7 @@ export const updatestore = async (req, res) => {
     storename: storename,
     address: address,
     stars: stars,
-    userId: req.userId,
+    userId: req.user,
   };
   try {
     const stores = await storeModel.findByIdAndUpdate(id, newStore, {
@@ -50,7 +51,7 @@ export const deletestore = async (req, res) => {
   }
 };
 export const getstore = async (req, res) => {
-  console.log(req.userId);
+  console.log(req.user);
   try {
     const stores = await storeModel.find({ userId: req.userId });
     res.status(201).json(stores);
@@ -61,7 +62,7 @@ export const getstore = async (req, res) => {
 };
 
 export const getallstore = async (req, res) => {
-  console.log(req.userId);
+  console.log(req.user);
   try {
     const stores = await storeModel.find({});
     res.status(201).json(stores);

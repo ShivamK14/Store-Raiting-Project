@@ -1,12 +1,12 @@
 import { useSocketContext } from "../../context/SocketContext";
-import useConversation from "../../zustand/useConversation";
+import useStores from "../../zustand/useStores";
 
-const Conversation = ({ conversation, lastIdx, emoji }) => {
-  const { selectedConversation, setSelectedConversation } = useConversation();
+const Stores = ({ stores, lastIdx, emoji }) => {
+  // const { selectedStores, setSelectedStores } = useStores();
 
-  const isSelected = selectedConversation?._id === conversation._id;
+  const isSelected = selectedStores?._id === stores._id;
   const { onlineUsers } = useSocketContext();
-  const isOnline = onlineUsers.includes(conversation._id);
+  const isOnline = onlineUsers.includes(stores._id);
 
   return (
     <>
@@ -14,17 +14,17 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
         className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer
 				${isSelected ? "bg-sky-500" : ""}
 			`}
-        onClick={() => setSelectedConversation(conversation)}
+        onClick={() => setSelectedStores(stores)}
       >
         <div className={`avatar ${isOnline ? "online" : ""}`}>
           <div className="w-12 square-full">
-            <h3 className="m-4">{conversation.total_star}</h3>
+            <h3 className="m-4">{stores.total_star}</h3>
           </div>
         </div>
 
         <div className="flex flex-col flex-1">
           <div className="flex gap-3 justify-between">
-            <p className="font-bold text-gray-200">{conversation.storename}</p>
+            <p className="font-bold text-gray-200">{stores.storename}</p>
             <span className="text-xl">{emoji}</span>
           </div>
         </div>
@@ -34,10 +34,10 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
     </>
   );
 };
-export default Conversation;
+export default Stores;
 
 // STARTER CODE SNIPPET
-// const Conversation = () => {
+// const Stores = () => {
 // 	return (
 // 		<>
 // 			<div className='flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer'>
@@ -62,4 +62,4 @@ export default Conversation;
 // 		</>
 // 	);
 // };
-// export default Conversation;
+// export default Stores;

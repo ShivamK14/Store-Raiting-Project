@@ -5,6 +5,7 @@ import Login from "./pages/login/Login";
 import SignUp from "./pages/signup/SignUp";
 import { Toaster } from "react-hot-toast";
 import { useAuthContext } from "./context/AuthContext";
+import CreateStore from "./pages/createStore/CreateStore";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -23,6 +24,7 @@ function App() {
           path="/signup"
           element={authUser ? <Navigate to="/" /> : <SignUp />}
         />
+        <Route path="/CreateStore" element={<CreateStore />} />
       </Routes>
       <Toaster />
     </div>

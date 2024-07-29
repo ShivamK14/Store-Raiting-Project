@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-const useGetConversations = () => {
+const useGetStores = () => {
   const [loading, setLoading] = useState(false);
-  const [conversations, setConversations] = useState([]);
+  const [stores, setStores] = useState([]);
 
   useEffect(() => {
-    const getConversations = async () => {
+    const getstores = async () => {
       setLoading(true);
       try {
         const res = await fetch("/api/store/allstroes");
@@ -14,8 +14,7 @@ const useGetConversations = () => {
         if (data.error) {
           throw new Error(data.error);
         }
-        console.log(data);
-        setConversations(data);
+        setStores(data);
       } catch (error) {
         toast.error(error.message);
       } finally {
@@ -23,9 +22,9 @@ const useGetConversations = () => {
       }
     };
 
-    getConversations();
+    getstores();
   }, []);
 
-  return { loading, conversations };
+  return { loading, stores };
 };
-export default useGetConversations;
+export default useGetStores;
