@@ -8,7 +8,7 @@ import { useAuthContext } from "./context/AuthContext";
 import CreateStore from "./pages/createStore/CreateStore";
 import MyStore from "./pages/myStore/MyStore";
 import CreateStore2 from "./pages/createStore/CreateStore2";
-
+import test from "./components/TestTEST";
 function App() {
   const { authUser } = useAuthContext();
   return (

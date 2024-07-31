@@ -4,11 +4,13 @@ import Navbar from "../../components/Navbar";
 import LogoutButton from "../../components/sidebar/LogoutButton";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Stores from "../../components/sidebar/stores";
+
 const Home = () => {
   return (
     <>
       <div className="">
         <Navbar />
+
         <Stores />
       </div>
     </>
