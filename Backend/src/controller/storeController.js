@@ -53,7 +53,7 @@ export const deletestore = async (req, res) => {
 export const getstore = async (req, res) => {
   console.log(req.user);
   try {
-    const stores = await storeModel.find({ userId: req.userId });
+    const stores = await storeModel.find({ userId: req.user });
     res.status(201).json(stores);
   } catch (error) {
     console.log(error);

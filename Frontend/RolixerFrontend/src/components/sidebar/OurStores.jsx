@@ -1,14 +1,16 @@
+import useGetMyStores from "../../hooks/useGetMyStores";
 import useGetStores from "../../hooks/useGetStores";
 import { getRandomEmoji } from "../../utils/emojis";
 // import Conversation from "./Conversation";
 import Card from "../Card";
-const stores = () => {
-  const { loading, stores } = useGetStores();
+import MyStoreCard from "../MyStoreCard";
+const OurStores = () => {
+  const { loading, stores } = useGetMyStores();
 
   return (
     <div class="flex justify-center flex-wrap gap-7">
       {stores.map((store, idx) => (
-        <Card
+        <MyStoreCard
           key={store._id}
           stores={store}
           emoji={getRandomEmoji()}
@@ -22,7 +24,7 @@ const stores = () => {
     </div>
   );
 };
-export default stores;
+export default OurStores;
 
 // STARTER CODE SNIPPET
 // import Conversation from "./Conversation";

@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 
 import toast from "react-hot-toast";
 
-const useGetStores = () => {
+const useGetMyStores = () => {
   const [loading, setLoading] = useState(false);
   const [stores, setStores] = useState([]);
 
   useEffect(() => {
-    const getstores = async () => {
+    const getmystores = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/api/store/allstroes");
+        const res = await fetch("/api/store/");
         const data = await res.json();
         if (data.error) {
           throw new Error(data.error);
@@ -23,9 +23,9 @@ const useGetStores = () => {
       }
     };
 
-    getstores();
+    getmystores();
   }, []);
 
   return { loading, stores };
 };
-export default useGetStores;
+export default useGetMyStores;

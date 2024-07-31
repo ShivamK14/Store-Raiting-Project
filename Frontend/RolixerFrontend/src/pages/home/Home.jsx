@@ -7,8 +7,10 @@ import Stores from "../../components/sidebar/stores";
 const Home = () => {
   return (
     <>
-      <Navbar />
-      <Stores />
+      <div className="">
+        <Navbar />
+        <Stores />
+      </div>
     </>
   );
 };
