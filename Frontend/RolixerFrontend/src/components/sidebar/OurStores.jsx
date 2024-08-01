@@ -8,7 +8,7 @@ const OurStores = () => {
   const { loading, stores } = useGetMyStores();
 
   return (
-    <div class="flex justify-center flex-wrap gap-7">
+    <div className="flex justify-center flex-wrap gap-7">
       {stores.map((store, idx) => (
         <MyStoreCard
           key={store._id}

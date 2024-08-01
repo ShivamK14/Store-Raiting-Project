@@ -1,4 +1,5 @@
 import storeModel from "../models/store.js";
+import User from "../models/user.js";
 
 export const createstore = async (req, res) => {
   console.log(req.body);
@@ -52,8 +53,16 @@ export const deletestore = async (req, res) => {
 };
 export const getstore = async (req, res) => {
   console.log(req.user);
+  let tofind = {};
   try {
-    const stores = await storeModel.find({ userId: req.user });
+    const user = await User.findOne({ _id: req.user.id });
+    if (user.isAdmin) {
+    } else {
+      tofind = { userId: req.user };
+    }
+
+    const stores = await storeModel.find(tofind);
+
     res.status(201).json(stores);
   } catch (error) {
     console.log(error);
@@ -73,9 +82,10 @@ export const getallstore = async (req, res) => {
 };
 
 export const rating = async (req, res) => {
-  const id = req.userId;
+  const id = req.user.id;
   console.log("_id", id);
   const { stars, userId } = req.body;
+  console.log("userid", stars, userId);
   try {
     const product = await storeModel.findById(userId);
     console.log(product);
@@ -88,7 +98,7 @@ export const rating = async (req, res) => {
           ratings: { $elemMatch: alreadyRated },
         },
         {
-          $set: { "ratings.$.stars": stars },
+          $set: { "ratings.$.stars": parseInt(stars) },
         },
         {
           new: true,
@@ -100,7 +110,7 @@ export const rating = async (req, res) => {
         {
           $push: {
             ratings: {
-              stars: stars,
+              stars: parseInt(stars),
               postedBy: id,
             },
           },

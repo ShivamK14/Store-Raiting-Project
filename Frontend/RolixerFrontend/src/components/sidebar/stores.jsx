@@ -6,7 +6,7 @@ const stores = () => {
   const { loading, stores } = useGetStores();
 
   return (
-    <div class="flex justify-center flex-wrap gap-7">
+    <div className="flex justify-center flex-wrap gap-7">
       {stores.map((store, idx) => (
         <Card
           key={store._id}
@@ -23,20 +23,3 @@ const stores = () => {
   );
 };
 export default stores;
-
-// STARTER CODE SNIPPET
-// import Conversation from "./Conversation";
-
-// const stroes = () => {
-// 	return (
-// 		<div className='py-2 flex flex-col overflow-auto'>
-// 			<Conversation />
-// 			<Conversation />
-// 			<Conversation />
-// 			<Conversation />
-// 			<Conversation />
-// 			<Conversation />
-// 		</div>
-// 	);
-// };
-// export default stroes;

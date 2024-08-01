@@ -6,8 +6,8 @@ import OurStores from "../../components/sidebar/OurStores";
 const MyStore = () => {
   return (
     <>
-      <Navbar />
       <CreateNewStore />
+      <Navbar />
       <OurStores />
     </>
   );
