@@ -11,6 +11,10 @@ const storeModel = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
+    storePic: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );

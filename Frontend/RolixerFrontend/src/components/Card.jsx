@@ -13,7 +13,7 @@ const Card = ({ stores, lastIdx, emoji }) => {
         <a href="#">
           <img
             className="p-8 rounded-t-lg"
-            src="/docs/images/products/apple-watch.png"
+            src={stores.storePic}
             alt="product image"
           />
         </a>
@@ -81,19 +81,18 @@ const Card = ({ stores, lastIdx, emoji }) => {
               {stores.total_star}
             </span>
             <a
-              href="#"
               onClick={() => setToggelRating(!toggelRating)}
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 cursor-pointer"
             >
               Rate Store
             </a>
-            {toggelRating && (
-              <RatingCard
-                key={stores._id}
-                stores={stores}
-                toggelRating={toggelRating}
-              />
-            )}
+
+            <RatingCard
+              key={stores._id}
+              stores={stores}
+              trigger={toggelRating}
+              setTigger={setToggelRating}
+            />
           </div>
         </div>
       </div>

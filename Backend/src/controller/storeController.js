@@ -5,10 +5,12 @@ export const createstore = async (req, res) => {
   console.log(req.body);
   const { storename, address } = req.body;
   console.log(storename, address);
+  const storePic = `https://avatar.iran.liara.run/public/boy?username=${storename}`;
   const newStore = new storeModel({
     storename: storename,
     address: address,
     userId: req.user,
+    storePic: storePic,
   });
   try {
     await newStore.save();

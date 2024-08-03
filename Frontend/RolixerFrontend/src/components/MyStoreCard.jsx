@@ -214,7 +214,7 @@ const MyStoreCard = ({ stores, lastIdx, emoji }) => {
         <div className="flex flex-col items-center pb-10">
           <img
             className="w-24 h-24 mb-3 rounded-full shadow-lg"
-            src="/docs/images/people/profile-picture-3.jpg"
+            src={stores.storePic}
             alt="Bonnie image"
           />
           <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
@@ -235,13 +235,12 @@ const MyStoreCard = ({ stores, lastIdx, emoji }) => {
               Rate
             </a>
 
-            {toggelRating && (
-              <RatingCard
-                key={stores._id}
-                stores={stores}
-                toggelRating={toggelRating}
-              />
-            )}
+            <RatingCard
+              key={stores._id}
+              stores={stores}
+              trigger={toggelRating}
+              setTigger={setToggelRating}
+            />
           </div>
         </div>
       </div>

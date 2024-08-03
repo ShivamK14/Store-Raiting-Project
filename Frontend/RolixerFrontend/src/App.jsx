@@ -11,6 +11,7 @@ import CreateStore2 from "./pages/createStore/CreateStore2";
 import test from "./components/TestTEST";
 function App() {
   const { authUser } = useAuthContext();
+  console.log(authUser);
   return (
     <div className="pt-20 p-5 min-h-screen flex items-center justify-center">
       <Routes>
@@ -26,8 +27,14 @@ function App() {
           path="/signup"
           element={authUser ? <Navigate to="/" /> : <SignUp />}
         />
-        <Route path="/CreateStore" element={<CreateStore2 />} />
-        <Route path="/MyStore" element={<MyStore />} />
+        <Route
+          path="/CreateStore"
+          element={authUser ? <CreateStore2 /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          path="/MyStore"
+          element={authUser ? <MyStore /> : <Navigate to={"/login"} />}
+        />
       </Routes>
       <Toaster />
     </div>
