@@ -9,8 +9,9 @@ import Star from "./StarRating";
 
 const RatingCard = ({ stores, trigger, setTigger }) => {
   const [inputs, setInputs] = useState({
-    stars: stores.rating,
+    stars: stores.total_star,
     userId: stores._id,
+    review: stores.ratings.review,
   });
 
   const { loading, ratestore } = useRateStore();
@@ -21,24 +22,23 @@ const RatingCard = ({ stores, trigger, setTigger }) => {
     await ratestore(inputs);
   };
   const handleRatingChange = (stars) => {
-    console.log(stars);
     setInputs({ ...inputs, stars });
   };
 
   return (
     <>
       {trigger && (
-        <div class="  fixed   z-50 justify-center items-center w-full max-h-full backdrop-blur-sm md:inset-0 ">
-          <div class="py-3 sm:max-w-xl sm:mx-auto">
-            <div class="dark:bg-gray-800 dark:border-gray-700 min-w-1xl flex flex-col rounded-xl shadow-lg">
-              <div class="px-12 py-5">
-                <h2 class="text-gray-800 text-3xl font-semibold">
+        <div className="  fixed   z-50 justify-center items-center w-full max-h-full backdrop-blur-sm md:inset-0 ">
+          <div className="py-3 sm:max-w-xl sm:mx-auto">
+            <div className="dark:bg-gray-800 dark:border-gray-700 min-w-1xl flex flex-col rounded-xl shadow-lg">
+              <div className="px-12 py-5">
+                <h2 className="text-gray-800 text-3xl font-semibold">
                   Your opinion matters to us!
                 </h2>
               </div>
-              <div class="bg-gray-200 w-full flex flex-col items-center">
-                <div class="flex flex-col items-center py-6 space-y-3">
-                  <span class="text-lg text-gray-800">
+              <div className="bg-gray-200 w-full flex flex-col items-center">
+                <div className="flex flex-col items-center py-6 space-y-3">
+                  <span className="text-lg text-gray-800">
                     How was quality of the call?
                   </span>
 
@@ -47,18 +47,19 @@ const RatingCard = ({ stores, trigger, setTigger }) => {
                     stars={inputs.stars}
                   />
                 </div>
-                <div class="w-3/4 flex flex-col">
+                <div className="w-3/4 flex flex-col">
                   <textarea
                     rows="3"
-                    value={inputs.stars}
-                    // onChange={(e) =>
-                    //   setInputs({ ...inputs, stars: e.target.value })
-                    // }
-                    class="p-4 text-gray-500 rounded-xl resize-none"
+                    value={inputs.review}
+                    onChange={(e) =>
+                      setInputs({ ...inputs, review: e.target.value })
+                    }
+                    placeholder="Write a review"
+                    className="p-4 text-gray-500 rounded-xl resize-none"
                   ></textarea>
                   <button
                     onClick={handleSubmit}
-                    class="py-3 my-8 text-sm text-center bg-blue-700 rounded-lg text-white focus:ring-4 focus:outline-none focus:ring-blue-300 hover:bg-blue-800 dark:hover:bg-blue-800 dark:focus:ring-blue-800 "
+                    className="py-3 my-8 text-sm text-center bg-blue-700 rounded-lg text-white focus:ring-4 focus:outline-none focus:ring-blue-300 hover:bg-blue-800 dark:hover:bg-blue-800 dark:focus:ring-blue-800 "
                   >
                     Rate now
                   </button>
@@ -66,9 +67,9 @@ const RatingCard = ({ stores, trigger, setTigger }) => {
               </div>
               <div
                 onClick={() => setTigger(false)}
-                class="h-20 flex items-center justify-center"
+                className="h-20 flex items-center justify-center cursor-pointer"
               >
-                <a class="text-gray-600">Maybe later</a>
+                <a className="text-gray-600">Maybe later</a>
               </div>
             </div>
           </div>

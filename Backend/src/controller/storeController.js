@@ -86,11 +86,10 @@ export const getallstore = async (req, res) => {
 export const rating = async (req, res) => {
   const id = req.user.id;
   console.log("_id", id);
-  const { stars, userId } = req.body;
-  console.log("userid", stars, userId);
+  const { stars, userId, review } = req.body;
+  console.log("review", review);
   try {
     const product = await storeModel.findById(userId);
-    console.log(product);
     let alreadyRated = product.ratings.find((userId) => userId.postedBy === id);
     console.log(alreadyRated);
 
@@ -100,8 +99,12 @@ export const rating = async (req, res) => {
           ratings: { $elemMatch: alreadyRated },
         },
         {
-          $set: { "ratings.$.stars": parseInt(stars) },
+          $set: {
+            "ratings.$.stars": parseInt(stars),
+            "ratings.$.review": review,
+          },
         },
+
         {
           new: true,
         }
@@ -113,6 +116,7 @@ export const rating = async (req, res) => {
           $push: {
             ratings: {
               stars: parseInt(stars),
+              review: review,
               postedBy: id,
             },
           },

@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 
 const Star = ({ onRatingChange, stars }) => {
   const [rating, setRating] = useState(stars);
-  const [hover, setHover] = useState(null);
+  const [hover, setHover] = useState(stars);
 
   return (
     <>
@@ -14,7 +14,7 @@ const Star = ({ onRatingChange, stars }) => {
           return (
             <label>
               <input
-                class="hidden"
+                className="hidden"
                 type="radio"
                 name="rating"
                 id="starRating"
@@ -22,7 +22,7 @@ const Star = ({ onRatingChange, stars }) => {
                 onClick={() => onRatingChange(currentRating)}
               />
               <FaStar
-                class="cursor-pointer"
+                className="cursor-pointer"
                 size={50}
                 onMouseEnter={() => setHover(currentRating)}
                 onMouseLeave={() => setHover(null)}

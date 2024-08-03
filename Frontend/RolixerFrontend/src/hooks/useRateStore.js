@@ -4,15 +4,15 @@ import toast from "react-hot-toast";
 const useRateStore = () => {
   const [loading, setLoading] = useState(false);
 
-  const ratestore = async ({ stars, userId }) => {
-    console.log("in Rate", stars, userId);
+  const ratestore = async ({ stars, userId, review }) => {
+    console.log("in Rate", stars, userId, review);
     try {
       const res = await fetch("/api/store/allstroes/ratings", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ stars, userId }),
+        body: JSON.stringify({ stars, userId, review }),
       });
 
       const data = await res.json();
