@@ -1,17 +1,22 @@
 import { useState } from "react";
 import RatingCard from "./RatingCard";
+import AllReviews from "./AllReviews";
 
 const Card = ({ stores, lastIdx, emoji }) => {
   // const isSelected = selectedStores?._id === stores._id;
   // const { onlineUsers } = useSocketContext();
   // const isOnline = onlineUsers.includes(stores._id);
   const [toggelRating, setToggelRating] = useState(false);
-
+  const handelAllReview = () => {
+    return;
+  };
   return (
     <>
+      <AllReviews />
       <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
           <img
+            onClick={handelAllReview}
             className="p-8 rounded-t-lg"
             src={stores.storePic}
             alt="product image"
