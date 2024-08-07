@@ -6,9 +6,11 @@ import OurStores from "../../components/sidebar/OurStores";
 const MyStore = () => {
   return (
     <>
-      <CreateNewStore />
       <Navbar />
-      <OurStores />
+      <div className="p-2 gap-5 ">
+        <CreateNewStore />
+        <OurStores />
+      </div>
     </>
   );
 };

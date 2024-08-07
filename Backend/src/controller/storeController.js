@@ -40,14 +40,20 @@ export const updatestore = async (req, res) => {
     res.status(202).json(stores);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Something Went Wrong" });
+    res.status(500).json({ error: "Something Went Wrong" });
   }
 };
 export const deletestore = async (req, res) => {
   const id = req.params.id;
   try {
     const stores = await storeModel.findByIdAndDelete(id);
-    res.status(202).json(stores);
+    if (stores) {
+      res.status(202).json(stores);
+    } else {
+      res
+        .status(401)
+        .json({ error: "Store Already Deleted Please refresh the Page" });
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Something Went Wrong" });
