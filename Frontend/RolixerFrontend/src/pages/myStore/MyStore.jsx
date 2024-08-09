@@ -7,7 +7,7 @@ const MyStore = () => {
   return (
     <>
       <Navbar />
-      <div className="p-2 gap-5 ">
+      <div className="pt-40 gap-5 md:pt-2">
         <CreateNewStore />
         <OurStores />
       </div>

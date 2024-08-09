@@ -28,18 +28,18 @@ const RatingCard = ({ stores, trigger, setTigger }) => {
   return (
     <>
       {trigger && (
-        <div className="  fixed   z-50 justify-center items-center w-full max-h-full backdrop-blur-sm md:inset-0 ">
+        <div className=" md:fixed z-50 justify-center items-center w-full max-h-full backdrop-blur-sm md:inset-0 absolute">
           <div className="py-3 sm:max-w-xl sm:mx-auto">
             <div className="dark:bg-gray-800 dark:border-gray-700 min-w-1xl flex flex-col rounded-xl shadow-lg">
               <div className="px-12 py-5">
-                <h2 className="text-gray-800 text-3xl font-semibold">
+                <h2 className="text-gray-300 text-xl font-semibold">
                   Your opinion matters to us!
                 </h2>
               </div>
-              <div className="bg-gray-200 w-full flex flex-col items-center">
+              <div className="bg-gray-900 w-full flex flex-col items-center">
                 <div className="flex flex-col items-center py-6 space-y-3">
-                  <span className="text-lg text-gray-800">
-                    How was quality of the call?
+                  <span className="text-lg text-gray-100 font-semibold">
+                    How is this store!!
                   </span>
 
                   <Star
@@ -55,11 +55,11 @@ const RatingCard = ({ stores, trigger, setTigger }) => {
                       setInputs({ ...inputs, review: e.target.value })
                     }
                     placeholder="Write a review"
-                    className="p-4 text-gray-500 rounded-xl resize-none"
+                    className="p-4 text-gray-100 rounded-xl resize-none bg-slate-800"
                   ></textarea>
                   <button
                     onClick={handleSubmit}
-                    className="py-3 my-8 text-sm text-center bg-blue-700 rounded-lg text-white focus:ring-4 focus:outline-none focus:ring-blue-300 hover:bg-blue-800 dark:hover:bg-blue-800 dark:focus:ring-blue-800 "
+                    className="py-3 my-8 text-sm text-center bg-blue-700 rounded-lg text-white focus:ring-4 focus:outline-none focus:ring-blue-300 hover:bg-blue-800 dark:hover:bg-blue-800 dark:focus:ring-blue-800  font-semibold"
                   >
                     Rate now
                   </button>
@@ -69,7 +69,7 @@ const RatingCard = ({ stores, trigger, setTigger }) => {
                 onClick={() => setTigger(false)}
                 className="h-20 flex items-center justify-center cursor-pointer"
               >
-                <a className="text-gray-600">Maybe later</a>
+                <a className="text-gray-300">Maybe later</a>
               </div>
             </div>
           </div>
