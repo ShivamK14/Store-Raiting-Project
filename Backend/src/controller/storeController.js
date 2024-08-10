@@ -91,13 +91,14 @@ export const getallstore = async (req, res) => {
 
 export const rating = async (req, res) => {
   const id = req.user.id;
+  const username = req.user.username;
   console.log("_id", id);
   const { stars, userId, review } = req.body;
   console.log("review", review);
   try {
     const product = await storeModel.findById(userId);
     let alreadyRated = product.ratings.find((userId) => userId.postedBy === id);
-    console.log(alreadyRated);
+    console.log("already rated", alreadyRated);
 
     if (alreadyRated) {
       const updateRating = await storeModel.updateOne(
@@ -108,6 +109,7 @@ export const rating = async (req, res) => {
           $set: {
             "ratings.$.stars": parseInt(stars),
             "ratings.$.review": review,
+            "ratings.$.createdAt": new Date(),
           },
         },
 
@@ -124,6 +126,8 @@ export const rating = async (req, res) => {
               stars: parseInt(stars),
               review: review,
               postedBy: id,
+              username: username,
+              createdAt: new Date(),
             },
           },
         },

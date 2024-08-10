@@ -28,10 +28,10 @@ const RatingCard = ({ stores, trigger, setTigger }) => {
   return (
     <>
       {trigger && (
-        <div className=" md:fixed z-50 justify-center items-center w-full max-h-full backdrop-blur-sm md:inset-0 absolute">
-          <div className="py-3 sm:max-w-xl sm:mx-auto">
-            <div className="dark:bg-gray-800 dark:border-gray-700 min-w-1xl flex flex-col rounded-xl shadow-lg">
-              <div className="px-12 py-5">
+        <div className=" md:fixed z-50 justify-center items-center  backdrop-blur-sm md:inset-0 absolute">
+          <div className="sm:py-10 sm:max-w-xl sm:mx-auto ">
+            <div className="dark:bg-gray-800 dark:border-gray-700  flex flex-col rounded-xl shadow-lg border border-gray-700">
+              <div className="px-10 py-5">
                 <h2 className="text-gray-300 text-xl font-semibold">
                   Your opinion matters to us!
                 </h2>
