@@ -1,5 +1,6 @@
-{
-  "name": "quotesproject",
+{  
+  "homepage": "https://ShivamK14.github.io/Store-Raiting-Project",
+  "name": "StoreBackend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
