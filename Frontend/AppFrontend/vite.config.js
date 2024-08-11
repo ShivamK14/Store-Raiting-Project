@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/Store-Raiting-Project",
+  base: "/Store-Frontned",
   server: {
     proxy: {
       "/api": "http://localhost:5000/",
