@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-  
-  "name": "rolixerfrontend",
-=======
 
   "name": "appfrontend",
->>>>>>> 371681486d8ed1717e2b10098df736430759f5c6
   "private": true,
   "version": "0.0.0",
   "type": "module",
