@@ -14,10 +14,10 @@ export const createstore = async (req, res) => {
   });
   try {
     await newStore.save();
-    res.status(201).json(newStore);
+    res.status(201).json({ message: "Store Created Successfully" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Something Went Wrong" });
+    res.status(500).json({ error: "Something Went Wrong" });
   }
 };
 
@@ -25,7 +25,7 @@ export const updatestore = async (req, res) => {
   const id = req.params.id;
   const { storename, address, stars } = req.body;
   if (stars > 5 || stars < 0) {
-    return res.status(400).json({ message: "stars should between 1-5" });
+    return res.status(400).json({ error: "stars should between 1-5" });
   }
   const newStore = {
     storename: storename,
@@ -37,7 +37,9 @@ export const updatestore = async (req, res) => {
     const stores = await storeModel.findByIdAndUpdate(id, newStore, {
       new: true,
     });
-    res.status(202).json(stores);
+    res
+      .status(202)
+      .json({ message: "Store Successfully Updated Please refresh the Page" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Something Went Wrong" });
@@ -48,7 +50,9 @@ export const deletestore = async (req, res) => {
   try {
     const stores = await storeModel.findByIdAndDelete(id);
     if (stores) {
-      res.status(202).json(stores);
+      res.status(202).json({
+        message: "Store Successfully Deleted Please refresh the Page",
+      });
     } else {
       res
         .status(401)
@@ -56,7 +60,7 @@ export const deletestore = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Something Went Wrong" });
+    res.status(500).json({ error: "Something Went Wrong" });
   }
 };
 export const getstore = async (req, res) => {
@@ -148,7 +152,7 @@ export const rating = async (req, res) => {
       },
       { new: true }
     );
-    res.status(201).json(finalProduct);
+    res.status(201).json({ message: "Rating Submitted" });
   } catch (error) {
     console.log(error);
     throw new Error(error);
