@@ -7,7 +7,7 @@ export default defineConfig({
   // base: "/Store-Frontned",
   server: {
     proxy: {
-      "/api": "http://localhost:5000/",
+      "/api": "https://store-raiting-project.onrender.com",
     },
   },
 });

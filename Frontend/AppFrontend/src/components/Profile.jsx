@@ -22,7 +22,7 @@ const Profile = () => {
         {toggelprofile && (
           <div
             id="userDropdown"
-            class="z-20 fixed bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 right-5"
+            class="z-20 fixed bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 xs:right-5 sm:right-5 md:right-5 xxl:right-52"
           >
             <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
               <div>{user.fullName}</div>
@@ -48,7 +48,6 @@ const Profile = () => {
                   Settings
                 </a>
               </li>
-              
             </ul>
             <div class="py-1">
               <a
